@@ -15,9 +15,9 @@ export default function mainTemplate(searchResults) {
                             <p style="margin-top: 16px;">${detail.description}</p>
                         </div>
                         
-                        <div class="text-nowrap" style="min-width: 100px; text-align: end; display: flex; flex-direction: column; justify-content: end">
+                        <div style="min-width: 112px; text-align: end; display: flex; flex-direction: column; justify-content: end">
                             Price: ${detail.price}$
-                            <button class="btn btn-primary" onclick="globalThis.onViewDetailsClicked(${detail.id})" style="width: fit-content; margin-top: 10px">View Details</button>
+                            <button class="btn btn-primary" onclick="globalThis.onViewDetailsClicked(${detail.id})" style="width: fit-content; white-space: nowrap; margin-top: 10px">View Details</button>
                         </div>
                         
                         
