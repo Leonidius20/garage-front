@@ -7,26 +7,20 @@ export default class MainView {
     }
 
     render() {
-        document.getElementById('container').innerHTML = mainTemplate();
-        new autoComplete({
-            selector: 'input[name="q"]',
-            minChars: 2,
-            source: (term, response) => {
-                this.controller.abortSearchSuggestionsRequest();
-                this.controller.requestSearchSuggestions(term, data => response(data));
-            },
-            renderItem: (item, search) => {
-                const word = item['word'];
-                const wordId = item['word_id'];
+        document.getElementById('container').innerHTML = mainTemplate(this.controller.data);
 
-                search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-                const re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
-                return '<div class="autocomplete-suggestion" data-val="' + word + '" data-id="'+ wordId +'">' + word.replace(re, "<b>$1</b>") + '</div>';
-            },
-            onSelect: (event, term, item) => {
-                window.location.hash = `word/${item.dataset.id}`;
+        const searchBox = document.getElementById("q");
+
+        searchBox.onkeypress = (event) => {
+            if (event.keyCode === 13) {
+                const query = searchBox.value
+                if (query.length === 0) {
+                    this.controller.supplyData()
+                } else {
+                    this.controller.searchData(query)
+                }
             }
-        });
+        }
     }
 
 

@@ -2,34 +2,31 @@ import MainView from "./mainView";
 import BaseController from "../base/baseController";
 import $ from "jquery";
 import {API} from "../index";
+import {getFromEndpoint} from "../dao/base";
+import {hideLoader, showLoader} from "../loader/loader";
 
 export default class MainController extends BaseController {
 
     constructor() {
         super();
         this.view = new MainView(this);
-        this.searchSuggestionsRequest = null;
+        this.data = [];
     }
 
     supplyData() {
-        return new Promise(resolve => {
+        return getFromEndpoint('details').then(data => {
+            this.data = data.results;
             this.view.render();
-            resolve();
         });
     }
 
-    abortSearchSuggestionsRequest() {
-        try {
-            this.searchSuggestionsRequest.abort();
-        } catch (e) {}
+    searchData(query) {
+        showLoader()
+        getFromEndpoint(`details/search?query=${query}`).then(data => {
+            this.data = data.results;
+            this.view.render();
+            hideLoader()
+        })
     }
-
-    requestSearchSuggestions(searchTerm, callback) {
-        // TODO: maybe move to model
-        $.getJSON(API + 'search', {q: searchTerm}, (data) => {
-            callback(data);
-        });
-    }
-
 
 }

@@ -12,7 +12,7 @@ import MyWordsController from "./mywords/myWordsController";
 import QuizController from "./quiz/quizController";
 import AccountController from "./account/AccountController";
 
-export const API = 'http://localhost:3000/';
+export const API = 'https://hidden-waters-84373.herokuapp.com/';
 
 window.onhashchange = navigate;
 
