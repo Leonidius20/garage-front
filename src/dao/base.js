@@ -31,8 +31,8 @@ export function postToEndpoint(endpoint, data, expectResponseBody = true) {
     return fetchFromEndpoint(endpoint, 'POST', data, expectResponseBody);
 }
 
-export function deleteFromEndpoint(endpoint) {
-    return fetchFromEndpoint(endpoint, 'DELETE');
+export function deleteFromEndpoint(endpoint, expectResponseBody = true) {
+    return fetchFromEndpoint(endpoint, 'DELETE', null, expectResponseBody);
 }
 
 export function patchEndpoint(endpoint, data) {

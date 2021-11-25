@@ -1,8 +1,6 @@
 import BaseController from "../base/baseController";
 import DetailView from "./detailView";
-import {getWord} from "../dao/word";
-import {getFromEndpoint, postToEndpoint} from "../dao/base";
-import {API} from "../index";
+import {deleteFromEndpoint, getFromEndpoint} from "../dao/base";
 import showErrorScreen from "../errorpage/errorController";
 
 export default class DetailController extends BaseController {
@@ -27,9 +25,12 @@ export default class DetailController extends BaseController {
         })
     }
 
-    deleteDetail(definitionId, onSuccess) {
-        postToEndpoint( `mywords/${definitionId}`)
-            .then(onSuccess).catch(error => {
+    deleteDetail() {
+        deleteFromEndpoint( `details/${this.detailId}`, false)
+            .then(() => {
+                alert("Deleted or not deleted the detail. Who knows.");
+                window.location.hash = '';
+            }).catch(error => {
                 showErrorScreen(error);
                 console.log(error);
         });
