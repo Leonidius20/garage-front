@@ -3,7 +3,7 @@ export default function quizTemplate(word, definitions) {
         <div class="container" style="display: flex; justify-content: center">
             <div class="card" style="max-width: 18rem; flex-grow: 1">
               <div class="card-body">
-                <h5 class="card-title">${word['word']}</h5>
+                <h5 class="card-title">${word['detail']}</h5>
                 <p class="card-text text-muted">${word['part_of_speech']}</p>
               </div>
               <ul class="list-group list-group-flush">

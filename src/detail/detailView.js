@@ -1,16 +1,14 @@
-import wordTemplate from "./wordTemplate";
+import detailTemplate from "./detailTemplate";
 import {authKeyExists} from "../dao/authKey";
 
-export default class WordView {
+export default class DetailView {
 
     constructor(controller) {
         this.controller = controller;
     }
 
-    render(word) {
-        console.log(word);
-        document.getElementById('container').innerHTML = wordTemplate(word);
-        globalThis.onAddDefinitionClicked = this.onAddDefinitionClicked.bind(this);
+    render(detail) {
+        document.getElementById('container').innerHTML = detailTemplate(detail);
     }
 
     onAddDefinitionClicked(element, definitionId) {

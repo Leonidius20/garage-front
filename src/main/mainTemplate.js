@@ -17,7 +17,7 @@ export default function mainTemplate(searchResults) {
                         
                         <div class="text-nowrap" style="min-width: 100px; text-align: end; display: flex; flex-direction: column; justify-content: end">
                             Price: ${detail.price}$
-                            <button class="btn btn-primary" onclick="globalThis.onRemoveWordClicked(${detail.def_id})" style="width: fit-content; margin-top: 10px">View Details</button>
+                            <button class="btn btn-primary" onclick="globalThis.onViewDetailsClicked(${detail.id})" style="width: fit-content; margin-top: 10px">View Details</button>
                         </div>
                         
                         

@@ -30,7 +30,7 @@ export default function myWordsTemplate(myWords, pagesCount, currentPage) {
                                     ${word['synonyms'].map(synonym => {
                 return `
                                                         <a href="#word/${synonym['word_id']}">
-                                                            <span class="badge bg-light text-dark">${synonym['word']}</span></a>`;
+                                                            <span class="badge bg-light text-dark">${synonym['detail']}</span></a>`;
                 }).join(',')}
                         </div>
                         <div class="text-nowrap" style="min-width: 100px; display: flex; flex-direction: column; justify-content: space-between">

@@ -19,7 +19,7 @@ function loaderTemplate() {
     return `
         <div class="blurry">
             <div id="spinner" class="spinner-border text-primary" role="status">
-                <span class="sr-only">Loading...</span>
+               
             </div>
         </div>
     `;

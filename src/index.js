@@ -3,7 +3,7 @@ import 'jquery';
 import 'bootstrap/dist/js/bootstrap.min';
 import './assets/global-styles.css';
 import MainController from "./main/mainController";
-import WordController from "./word/wordController";
+import DetailController from "./detail/detailController";
 import {authKeyExists, clearAuthKey, getAuthKey} from "./dao/authKey";
 import LoginController from "./login/loginController";
 import mainTemplate from "./mainTemplate";
@@ -11,6 +11,7 @@ import RegistrationController from "./registration/registrationController";
 import MyWordsController from "./mywords/myWordsController";
 import QuizController from "./quiz/quizController";
 import AccountController from "./account/AccountController";
+import AddDetailController from "./add_detail/addDetailController";
 
 export const API = 'https://hidden-waters-84373.herokuapp.com/';
 
@@ -33,8 +34,11 @@ function navigate() {
             new MainController().showPage();
             // selectNavbarItem('nav-item-home');
             break;
-        case 'word':
-            new WordController(id).showPage();
+        case 'detail':
+            new DetailController(id).showPage();
+            break;
+        case 'add-detail':
+            new AddDetailController().showPage();
             break;
         case 'login':
             if (!authKeyExists()) new LoginController().showPage();

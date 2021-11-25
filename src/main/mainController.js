@@ -11,20 +11,32 @@ export default class MainController extends BaseController {
         super();
         this.view = new MainView(this);
         this.data = [];
+
+        globalThis.onViewDetailsClicked = (id) => {
+            window.location.hash = `detail/${id}`;
+        }
     }
 
     supplyData() {
         return getFromEndpoint('details').then(data => {
-            this.data = data.results;
-            this.view.render();
+            if (!data.error) {
+                this.data = data.results;
+                this.view.render();
+            } else {
+                alert(data.error)
+            }
         });
     }
 
     searchData(query) {
         showLoader()
         getFromEndpoint(`details/search?query=${query}`).then(data => {
-            this.data = data.results;
-            this.view.render();
+            if (!data.error) {
+                this.data = data.results;
+                this.view.render();
+            } else {
+                alert(data.error)
+            }
             hideLoader()
         })
     }
