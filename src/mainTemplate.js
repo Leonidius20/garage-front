@@ -22,12 +22,12 @@ export default function mainTemplate(loggedIn) {
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         ${!loggedIn ? `
-                            <li class="nav-item">
+                            <!--<li class="nav-item">
                                   <a class="nav-link" aria-current="page" href="#registration">Sign up</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" aria-current="page" href="#login">Log in</a>
-                            </li>
+                            </li>-->
                         ` : `
                             <li class="nav-item">
                                 <a class="nav-link" aria-current="page" href="#account">My account</a>

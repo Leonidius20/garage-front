@@ -17,7 +17,11 @@ export default class MainView {
                 if (query.length === 0) {
                     this.controller.supplyData()
                 } else {
-                    this.controller.searchData(query)
+                    const manufacturer = document.getElementById("manufacturer").value
+                    const maxPrice = document.getElementById("max_price").value
+                    const minPrice = document.getElementById("min_price").value
+
+                    this.controller.searchData(query, manufacturer, maxPrice, minPrice)
                 }
             }
         }

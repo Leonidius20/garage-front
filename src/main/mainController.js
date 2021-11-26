@@ -28,9 +28,18 @@ export default class MainController extends BaseController {
         });
     }
 
-    searchData(query) {
+    searchData(query, manufacturer, maxPrice, minPrice) {
         showLoader()
-        getFromEndpoint(`details/search?query=${query}`).then(data => {
+
+        let endpoint = `details/search?query=${query}`
+        if (manufacturer.length !== 0)
+            endpoint += `&manufacturer=${manufacturer}`
+        if (maxPrice.length !== 0)
+            endpoint += `&maxPrice=${maxPrice}`
+        if (minPrice.length !== 0)
+            endpoint += `&minPrice=${minPrice}`
+
+        getFromEndpoint(endpoint).then(data => {
             if (!data.error) {
                 this.data = data.results;
                 this.view.render();

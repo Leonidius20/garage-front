@@ -1,7 +1,16 @@
 export default function mainTemplate(searchResults) {
     return `
         <div class="container">
+        <form>
             <input style="margin-bottom: 15px" class="form-control" type="text" name="q" id="q" placeholder="Search for a car detail..." autocomplete="off">
+            <div style="display: flex">
+                <input style="margin-bottom: 15px; flex-grow: 2" class="form-control" type="text" id="manufacturer" placeholder="Filter by manufacturer (optional)" autocomplete="off">
+                <input style="margin-bottom: 15px; margin-left: 10px; flex-grow: 1" class="form-control" type="number" id="min_price" placeholder="Min price" autocomplete="off">
+                <input style="margin-bottom: 15px; margin-left: 10px; flex-grow: 1" class="form-control" type="number" id="max_price" placeholder="Max price" autocomplete="off">
+                
+            </div>
+        </form>
+            
             
             ${searchResults.length === 0 ? `<p>Type your search query and hit Enter.</p>` : ``}
             
