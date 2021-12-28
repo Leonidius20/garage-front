@@ -26,7 +26,7 @@ export default function mainTemplate(searchResults) {
                         
                         <div style="min-width: 112px; text-align: end; display: flex; flex-direction: column; justify-content: end">
                             Price: ${detail.price}$
-                            <button class="btn btn-primary" onclick="globalThis.onViewDetailsClicked(${detail.id})" style="width: fit-content; white-space: nowrap; margin-top: 10px">View Details</button>
+                            <button class="btn btn-primary" onclick="globalThis.onViewDetailsClicked('${detail.id}-${detail.source}')" style="width: fit-content; white-space: nowrap; margin-top: 10px">View Details</button>
                         </div>
                         
                         
@@ -35,6 +35,9 @@ export default function mainTemplate(searchResults) {
                
                         `
             ).join('<hr>')}
+            
+            <button class="btn btn-primary" onclick="globalThis.onPrevPageClicked()">Previous page</button>
+            <button class="btn btn-primary" onclick="globalThis.onNextPageClicked()">Next page</button>
             
         </div>
     `;

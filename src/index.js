@@ -13,7 +13,7 @@ import QuizController from "./quiz/quizController";
 import AccountController from "./account/AccountController";
 import AddDetailController from "./add_detail/addDetailController";
 
-export const API = 'https://hidden-waters-84373.herokuapp.com/';
+export const API = 'http://localhost:8081/';
 
 window.onhashchange = navigate;
 

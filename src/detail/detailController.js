@@ -15,7 +15,7 @@ export default class DetailController extends BaseController {
     }
 
     supplyData() {
-        return getFromEndpoint(`details/${this.detailId}`).then(data => {
+        return getFromEndpoint(`detail?id=${this.detailId}`).then(data => {
             if (!data.error) {
                 this.detail = data;
                 this.view.render(data);

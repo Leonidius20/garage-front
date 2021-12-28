@@ -11,14 +11,27 @@ export default class MainController extends BaseController {
         super();
         this.view = new MainView(this);
         this.data = [];
+        this.page = 1;
 
         globalThis.onViewDetailsClicked = (id) => {
             window.location.hash = `detail/${id}`;
         }
+
+        globalThis.onNextPageClicked = () => {
+            this.page += 1;
+            this.showPage();
+        }
+
+        globalThis.onPrevPageClicked = () => {
+            if (this.page > 1) {
+                this.page -= 1;
+                this.showPage();
+            }
+        }
     }
 
     supplyData() {
-        return getFromEndpoint('details').then(data => {
+        return getFromEndpoint(`details?page=${this.page}`).then(data => {
             if (!data.error) {
                 this.data = data.results;
                 this.view.render();
