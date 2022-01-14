@@ -50,7 +50,7 @@ export default class SearchResultsView {
                         
                         <div style="min-width: 112px; text-align: end; display: flex; flex-direction: column; justify-content: end">
                             Price: ${detail.price}$
-                            <button class="btn btn-primary" onclick="globalThis.onViewDetailsClicked('${detail.id}-${detail.source}')" style="width: fit-content; white-space: nowrap; margin-top: 10px">View Details</button>
+                            <button class="btn btn-primary" onclick="globalThis.onSearchResultDetailsClicked('${detail.id}-${detail.source}')" style="width: fit-content; white-space: nowrap; margin-top: 10px">View Details</button>
                         </div>
                         
                         
