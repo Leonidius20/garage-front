@@ -15,13 +15,14 @@ export default class MainView {
             if (event.keyCode === 13) {
                 const query = searchBox.value
                 if (query.length === 0) {
-                    this.controller.supplyData()
+                    // this.controller.supplyData()
                 } else {
-                    const manufacturer = document.getElementById("manufacturer").value
-                    const maxPrice = document.getElementById("max_price").value
-                    const minPrice = document.getElementById("min_price").value
+                    // const manufacturer = document.getElementById("manufacturer").value
+                    //const maxPrice = document.getElementById("max_price").value
+                    //const minPrice = document.getElementById("min_price").value
 
-                    this.controller.searchData(query, manufacturer, maxPrice, minPrice)
+                    // this.controller.searchData(query) //, manufacturer, maxPrice, minPrice)
+                    window.location.hash = `search/${query}`
                 }
             }
         }

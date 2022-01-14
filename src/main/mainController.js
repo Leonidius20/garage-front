@@ -33,7 +33,7 @@ export default class MainController extends BaseController {
     supplyData() {
         return getFromEndpoint(`details?page=${this.page}`).then(data => {
             if (!data.error) {
-                this.data = data.results;
+                this.data = data.results.slice(0, 20);
                 this.view.render();
             } else {
                 alert(data.error)
@@ -44,15 +44,17 @@ export default class MainController extends BaseController {
     searchData(query, manufacturer, maxPrice, minPrice) {
         showLoader()
 
+        let cachedEndpoint = `search-cached-details?query=${query}`
         let endpoint = `details/search?query=${query}`
-        if (manufacturer.length !== 0)
+
+        /*if (manufacturer.length !== 0)
             endpoint += `&manufacturer=${manufacturer}`
         if (maxPrice.length !== 0)
             endpoint += `&maxPrice=${maxPrice}`
         if (minPrice.length !== 0)
-            endpoint += `&minPrice=${minPrice}`
+            endpoint += `&minPrice=${minPrice}`*/
 
-        getFromEndpoint(endpoint).then(data => {
+        getFromEndpoint(cachedEndpoint).then(data => {
             if (!data.error) {
                 this.data = data.results;
                 this.view.render();
@@ -61,6 +63,29 @@ export default class MainController extends BaseController {
             }
             hideLoader()
         })
+
+        getFromEndpoint(endpoint).then(data => {
+            if (!data.error) {
+                for (const result of data.results) {
+                    if (this.data.filter(item => item.id === result.id && item.source === result.source).length <= 0) { // if not exists
+                        this.data.push(result)
+                    }
+                }
+                this.view.render();
+            } else {
+                alert(data.error)
+            }
+        })
+
+        /*getFromEndpoint(endpoint).then(data => {
+            if (!data.error) {
+                this.data = data.results;
+                this.view.render();
+            } else {
+                alert(data.error)
+            }
+            hideLoader()
+        })*/
     }
 
 }

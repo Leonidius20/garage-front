@@ -12,6 +12,7 @@ import MyWordsController from "./mywords/myWordsController";
 import QuizController from "./quiz/quizController";
 import AccountController from "./account/AccountController";
 import AddDetailController from "./add_detail/addDetailController";
+import SearchResultsController from "./searchResults/searchResultsController";
 
 export const API = 'http://localhost:8081/';
 
@@ -64,6 +65,9 @@ function navigate() {
         case 'account':
             if (!authKeyExists()) window.location.hash = 'login';
             else new AccountController().showPage();
+            break;
+        case 'search':
+            new SearchResultsController(id).showPage();
             break;
         default:
             window.location.hash = '';
