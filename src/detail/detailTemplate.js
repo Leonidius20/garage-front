@@ -16,7 +16,7 @@ export default function detailTemplate(detail) {
                         </div>
                         <div style="min-width: 71px">
                             
-                            <button class="btn btn-danger" onclick="globalThis.onDeleteDetailClicked()">Delete</button>
+                           <!-- <button class="btn btn-danger" onclick="globalThis.onDeleteDetailClicked()">Delete</button> -->
                             
                         </div>
                     </div>
