@@ -11,7 +11,7 @@ export default function detailTemplate(detail) {
                            
                             <p style="margin-top: 16px;">${detail.description}</p>
                             
-                            <h4>Price: ${detail.price}$</h4>
+                            <h4>${Math.round(detail.price * 100) / 100}$</h4>
                             
                         </div>
                         <div style="min-width: 71px">

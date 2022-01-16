@@ -17,12 +17,24 @@ export default class MainView {
                 if (query.length === 0) {
                     // this.controller.supplyData()
                 } else {
-                    // const manufacturer = document.getElementById("manufacturer").value
-                    //const maxPrice = document.getElementById("max_price").value
-                    //const minPrice = document.getElementById("min_price").value
+                    const manufacturer = document.getElementById("manufacturer").value
+                    const maxPrice = document.getElementById("max_price").value
+                    const minPrice = document.getElementById("min_price").value
+
+                    let hash = `search/${query}?`
+
+                    if (manufacturer.length !== 0) {
+                        hash += `manufacturer=${manufacturer}&`
+                    }
+                    if (maxPrice.length !== 0) {
+                        hash += `maxPrice=${maxPrice}&`
+                    }
+                    if (minPrice.length !== 0) {
+                        hash += `minPrice=${minPrice}&`
+                    }
 
                     // this.controller.searchData(query) //, manufacturer, maxPrice, minPrice)
-                    window.location.hash = `search/${query}`
+                    window.location.hash = hash
                 }
             }
         }

@@ -16,7 +16,23 @@ export default class SearchResultsView {
             if (event.keyCode === 13) {
                 const query = searchBox.value
                 if (query.length !== 0) {
-                    window.location.hash = `search/${query}`
+                    const manufacturer = document.getElementById("manufacturer").value
+                    const maxPrice = document.getElementById("max_price").value
+                    const minPrice = document.getElementById("min_price").value
+
+                    let hash = `search/${query}?`
+
+                    if (manufacturer.length !== 0) {
+                        hash += `manufacturer=${manufacturer}&`
+                    }
+                    if (maxPrice.length !== 0) {
+                        hash += `maxPrice=${maxPrice}&`
+                    }
+                    if (minPrice.length !== 0) {
+                        hash += `minPrice=${minPrice}&`
+                    }
+
+                    window.location.hash = hash
                 }
             }
         }
@@ -28,15 +44,15 @@ export default class SearchResultsView {
         <form>
             <input style="margin-bottom: 15px" class="form-control" type="text" id="qq" placeholder="Search for a car detail..." autocomplete="off">
             <div style="display: flex">
-               <!-- <input style="margin-bottom: 15px; flex-grow: 2" class="form-control" type="text" id="manufacturer" placeholder="Filter by manufacturer (optional)" autocomplete="off">
+                <input style="margin-bottom: 15px; flex-grow: 2" class="form-control" type="text" id="manufacturer" placeholder="Filter by manufacturer (optional)" autocomplete="off">
                 <input style="margin-bottom: 15px; margin-left: 10px; flex-grow: 1" class="form-control" type="number" id="min_price" placeholder="Min price" autocomplete="off">
-                <input style="margin-bottom: 15px; margin-left: 10px; flex-grow: 1" class="form-control" type="number" id="max_price" placeholder="Max price" autocomplete="off">-->
+                <input style="margin-bottom: 15px; margin-left: 10px; flex-grow: 1" class="form-control" type="number" id="max_price" placeholder="Max price" autocomplete="off">
                 
             </div>
         </form>
             
             
-            ${searchResults.length === 0 ? `<p>Type your search query and hit Enter.</p>` : ``}
+            ${searchResults.length === 0 ? `<p>Nothing found so far...</p>` : ``}
             
             ${searchResults.map(detail => `
                 <div class="definition">
@@ -49,7 +65,7 @@ export default class SearchResultsView {
                         </div>
                         
                         <div style="min-width: 112px; text-align: end; display: flex; flex-direction: column; justify-content: end">
-                            Price: ${detail.price}$
+                            Price: ${Math.round(detail.price * 100) / 100}$
                             <button class="btn btn-primary" onclick="globalThis.onSearchResultDetailsClicked('${detail.id}-${detail.source}')" style="width: fit-content; white-space: nowrap; margin-top: 10px">View Details</button>
                         </div>
                         
@@ -59,6 +75,8 @@ export default class SearchResultsView {
                
                         `
         ).join('<hr>')}
+            
+            ${this.controller.isLoadingAdditionalData ? '<p style="color: #cccccc">Loading additional results...</p><br>' : ''}
             
             <button class="btn btn-primary" onclick="globalThis.onResultsPrevPageClicked()">Previous page</button>
             <button class="btn btn-primary" onclick="globalThis.onResultsNextPageClicked()">Next page</button>

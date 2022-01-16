@@ -1,9 +1,6 @@
 import MainView from "./mainView";
 import BaseController from "../base/baseController";
-import $ from "jquery";
-import {API} from "../index";
 import {getFromEndpoint} from "../dao/base";
-import {hideLoader, showLoader} from "../loader/loader";
 
 export default class MainController extends BaseController {
 
@@ -41,18 +38,24 @@ export default class MainController extends BaseController {
         });
     }
 
-    searchData(query, manufacturer, maxPrice, minPrice) {
+    /*searchData(query, manufacturer, maxPrice, minPrice) {
         showLoader()
 
         let cachedEndpoint = `search-cached-details?query=${query}`
         let endpoint = `details/search?query=${query}`
 
-        /*if (manufacturer.length !== 0)
+        if (manufacturer.length !== 0) {
             endpoint += `&manufacturer=${manufacturer}`
-        if (maxPrice.length !== 0)
+            cachedEndpoint += `&manufacturer=${manufacturer}`
+        }
+        if (maxPrice.length !== 0) {
             endpoint += `&maxPrice=${maxPrice}`
-        if (minPrice.length !== 0)
-            endpoint += `&minPrice=${minPrice}`*/
+            cachedEndpoint += `&maxPrice=${maxPrice}`
+        }
+        if (minPrice.length !== 0) {
+            endpoint += `&minPrice=${minPrice}`
+            cachedEndpoint += `&minPrice=${minPrice}`
+        }
 
         getFromEndpoint(cachedEndpoint).then(data => {
             if (!data.error) {
@@ -85,7 +88,7 @@ export default class MainController extends BaseController {
                 alert(data.error)
             }
             hideLoader()
-        })*/
-    }
+        })
+    }*/
 
 }

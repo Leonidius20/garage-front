@@ -4,9 +4,9 @@ export default function mainTemplate(searchResults) {
         <form>
             <input style="margin-bottom: 15px" class="form-control" type="text" id="q" placeholder="Search for a car detail..." autocomplete="off">
             <div style="display: flex">
-               <!-- <input style="margin-bottom: 15px; flex-grow: 2" class="form-control" type="text" id="manufacturer" placeholder="Filter by manufacturer (optional)" autocomplete="off">
+                <input style="margin-bottom: 15px; flex-grow: 2" class="form-control" type="text" id="manufacturer" placeholder="Filter by manufacturer (optional)" autocomplete="off">
                 <input style="margin-bottom: 15px; margin-left: 10px; flex-grow: 1" class="form-control" type="number" id="min_price" placeholder="Min price" autocomplete="off">
-                <input style="margin-bottom: 15px; margin-left: 10px; flex-grow: 1" class="form-control" type="number" id="max_price" placeholder="Max price" autocomplete="off">-->
+                <input style="margin-bottom: 15px; margin-left: 10px; flex-grow: 1" class="form-control" type="number" id="max_price" placeholder="Max price" autocomplete="off">
                 
             </div>
         </form>
@@ -25,7 +25,7 @@ export default function mainTemplate(searchResults) {
                         </div>
                         
                         <div style="min-width: 112px; text-align: end; display: flex; flex-direction: column; justify-content: end">
-                            Price: ${detail.price}$
+                            Price: ${Math.round(detail.price * 100) / 100}$
                             <button class="btn btn-primary" onclick="globalThis.onViewDetailsClicked('${detail.id}-${detail.source}')" style="width: fit-content; white-space: nowrap; margin-top: 10px">View Details</button>
                         </div>
                         
