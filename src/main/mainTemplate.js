@@ -21,7 +21,7 @@ export default function mainTemplate(searchResults) {
                         <div>
                             <h3>${detail.name}</h3>
                             <small>Manufacturer: ${detail.manufacturer}</small>
-                            <p style="margin-top: 16px;">${detail.description}</p>
+                            <p style="margin-top: 16px;">${detail.description ? detail.description : ''}</p>
                         </div>
                         
                         <div style="min-width: 112px; text-align: end; display: flex; flex-direction: column; justify-content: end">
